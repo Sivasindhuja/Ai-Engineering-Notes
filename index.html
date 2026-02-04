@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Python Master Study Guide</title>
+    <style>
+        :root {
+            --primary-blue: #306998;
+            --secondary-yellow: #FFE873;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --code-bg: #282c34;
+            --code-text: #abb2bf;
+            --sidebar-width: 260px;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            display: flex;
+        }
+
+        /* Sidebar Navigation */
+        nav {
+            width: var(--sidebar-width);
+            background: var(--primary-blue);
+            height: 100vh;
+            position: fixed;
+            color: white;
+            padding: 20px;
+            overflow-y: auto;
+            border-right: 4px solid var(--secondary-yellow);
+        }
+
+        nav h2 { font-size: 1.2rem; margin-bottom: 20px; text-align: center; }
+        nav ul { list-style: none; padding: 0; }
+        nav ul li { margin: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        nav ul li a { 
+            color: white; 
+            text-decoration: none; 
+            font-size: 0.85rem; 
+            display: block; 
+            padding: 8px 5px;
+            transition: 0.2s; 
+        }
+        nav ul li a:hover { color: var(--secondary-yellow); padding-left: 10px; }
+
+        /* Main Content */
+        main {
+            margin-left: var(--sidebar-width);
+            padding: 40px;
+            width: calc(100% - var(--sidebar-width));
+            background: white;
+            min-height: 100vh;
+        }
+
+        section { margin-bottom: 60px; scroll-margin-top: 20px; }
+        
+        h1 { color: var(--primary-blue); font-size: 2.5rem; border-bottom: 4px solid var(--secondary-yellow); padding-bottom: 10px; }
+        h2 { color: #2c3e50; border-left: 6px solid var(--primary-blue); padding-left: 15px; background: #f8f9fa; padding-top: 10px; padding-bottom: 10px; }
+        h3 { color: #e67e22; margin-top: 30px; border-bottom: 1px dashed #ddd; }
+
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 18px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.95rem;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        code { font-family: 'Fira Code', 'Courier New', monospace; }
+
+        .note-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        table, th, td { border: 1px solid #dee2e6; }
+        th, td { padding: 12px; text-align: left; }
+        th { background-color: var(--primary-blue); color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+
+        .method-table td:first-child { font-weight: bold; color: #d35400; font-family: monospace; }
+
+        hr { border: 0; height: 2px; background: #eee; margin: 50px 0; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <h2>Python Roadmap</h2>
+    <ul>
+        <li><a href="#intro">1. Getting Started & Setup</a></li>
+        <li><a href="#syntax">2. Syntax & Indentation</a></li>
+        <li><a href="#variables">3. Variables & Naming</a></li>
+        <li><a href="#datatypes">4. Built-in Data Types</a></li>
+        <li><a href="#numbers">5. Numbers & Conversion</a></li>
+        <li><a href="#casting">6. Casting Constructors</a></li>
+        <li><a href="#strings">7. Strings & Slicing</a></li>
+        <li><a href="#string-methods">8. String Methods Table</a></li>
+        <li><a href="#booleans">9. Booleans & Logic</a></li>
+        <li><a href="#operators">10. Operators & Precedence</a></li>
+        <li><a href="#lists">11. Lists (Full Operations)</a></li>
+        <li><a href="#tuples">12. Tuples (Immutable Collections)</a></li>
+        <li><a href="#sets">13. Sets (Unordered Collections)</a></li>
+        <li><a href="#frozensets">14. Frozensets</a></li>
+        <li><a href="#dictionaries">15. Dictionaries (Key-Value)</a></li>
+        <li><a href="#conditionals">16. If, Elif, Else & Match</a></li>
+        <li><a href="#loops">17. While & For Loops</a></li>
+    </ul>
+</nav>
+
+<main>
+    <h1>Exhaustive Python Study Guide</h1>
+
+    <section id="intro">
+        <h2>1. Getting Started</h2>
+        <p>Python is an <strong>interpreted</strong> language. This means you write <code>.py</code> files and pass them to an interpreter. It can also be run directly in a browser or command line.</p>
+        <h3>Installation Checks</h3>
+        <pre><code># Windows
+C:\Users\Name>python --version
+
+# Linux / Mac
+python --version</code></pre>
+        <h3>Interactive Mode</h3>
+        <p>Type <code>python</code> or <code>py</code> in your terminal to enter the Python shell (<code>>>></code>). Use <code>exit()</code> to quit.</p>
+    </section>
+
+    <section id="syntax">
+        <h2>2. Basic Syntax</h2>
+        <p>Python uses <strong>indentation</strong> to indicate code blocks. While other languages use <code>{}</code>, Python requires whitespace.</p>
+        <pre><code>if 5 > 2:
+    print("This is correct!")
+# print("Error!") <- Missing indentation will cause a SyntaxError</code></pre>
+        <div class="note-box">
+            Best practice: Use 4 spaces for indentation. You must use the same number of spaces in the same block.
+        </div>
+        <h3>Statements</h3>
+        <p>Instructions are called statements. They usually end with a newline. Semicolons are optional and rarely used to put multiple statements on one line.</p>
+    </section>
+
+    <section id="variables">
+        <h2>3. Variables & Scope</h2>
+        <p>Variables are created when a value is assigned. They do not require type declaration.</p>
+        <pre><code>x = 10
+name = "Dev"
+print(type(x)) # <class 'int'></code></pre>
+        <h3>Naming Rules</h3>
+        <ul>
+            <li>Must start with a letter or underscore.</li>
+            <li>Cannot start with a number.</li>
+            <li>Only alphanumeric characters and underscores (A-z, 0-9, and _).</li>
+            <li>Case-sensitive (<code>age</code>, <code>Age</code>, and <code>AGE</code> are three different variables).</li>
+        </ul>
+        <h3>Variable Styles</h3>
+        <p><strong>Camel Case:</strong> <code>myVariableName</code> | <strong>Pascal Case:</strong> <code>MyVariableName</code> | <strong>Snake Case:</strong> <code>my_variable_name</code></p>
+        <h3>Multiple Values</h3>
+        <pre><code>x, y, z = "A", "B", "C" # Many to Many
+x = y = z = "Same"      # One to Many
+fruits = ["apple", "banana"]
+x, y = fruits           # Unpacking a list</code></pre>
+        <h3>Global Keyword</h3>
+        <p>Use <code>global</code> to create or modify a variable inside a function so it belongs to the global scope.</p>
+    </section>
+
+    <section id="datatypes">
+        <h2>4. Built-in Data Types</h2>
+        <table>
+            <tr><th>Category</th><th>Type Names</th></tr>
+            <tr><td>Text</td><td><code>str</code></td></tr>
+            <tr><td>Numeric</td><td><code>int, float, complex</code></td></tr>
+            <tr><td>Sequence</td><td><code>list, tuple, range</code></td></tr>
+            <tr><td>Mapping</td><td><code>dict</code></td></tr>
+            <tr><td>Set</td><td><code>set, frozenset</code></td></tr>
+            <tr><td>Boolean</td><td><code>bool</code></td></tr>
+            <tr><td>Binary</td><td><code>bytes, bytearray, memoryview</code></td></tr>
+            <tr><td>None</td><td><code>NoneType</code></td></tr>
+        </table>
+    </section>
+
+    <section id="numbers">
+        <h2>5. Numbers & Random</h2>
+        <p><strong>Int:</strong> Whole numbers of unlimited length. <br>
+           <strong>Float:</strong> Numbers with decimals, or scientific "e" to indicate power of 10 (e.g., <code>12E4</code>).<br>
+           <strong>Complex:</strong> Written with a "j" (e.g., <code>3+5j</code>).</p>
+        <pre><code>import random
+print(random.randrange(1, 10)) # Random number 1-9</code></pre>
+    </section>
+
+    <section id="casting">
+        <h2>6. Casting Constructors</h2>
+        <ul>
+            <li><code>int()</code>: From float (removes decimals) or string literal.</li>
+            <li><code>float()</code>: From int or string.</li>
+            <li><code>str()</code>: From numbers or other types.</li>
+        </ul>
+    </section>
+
+    <section id="strings">
+        <h2>7. Strings & Slicing</h2>
+        <p>Strings are arrays of Unicode characters. Python does not have a <code>char</code> type; a single character is a string of length 1.</p>
+        <pre><code>a = "Hello World"
+print(a[1])    # Indexing (e)
+print(a[2:5])  # Slicing (llo)
+print(a[:5])   # Start to index 5 (Hello)
+print(a[2:])   # Index 2 to end (llo World)
+print(a[-5:-2]) # Negative indexing (orl)</code></pre>
+        <h3>F-Strings (Python 3.6+)</h3>
+        <pre><code>price = 50
+txt = f"The price is {price:.2f} dollars" # Modifiers allowed</code></pre>
+        <h3>Escape Characters</h3>
+        <p>Use <code>\</code> for: <code>\"</code> (Double quote), <code>\n</code> (Newline), <code>\t</code> (Tab).</p>
+    </section>
+
+    <section id="string-methods">
+        <h2>8. String Methods Table</h2>
+        <table class="method-table">
+            <tr><th>Method</th><th>Description</th></tr>
+            <tr><td>strip()</td><td>Removes whitespace from start/end</td></tr>
+            <tr><td>lower() / upper()</td><td>Converts case</td></tr>
+            <tr><td>replace(a, b)</td><td>Replaces string with another</td></tr>
+            <tr><td>split(",")</td><td>Splits string into a list based on separator</td></tr>
+            <tr><td>len()</td><td>Returns length of string</td></tr>
+            <tr><td>capitalize()</td><td>Converts first character to upper case</td></tr>
+            <tr><td>find()</td><td>Searches for a value and returns position</td></tr>
+        </table>
+    </section>
+
+    <section id="booleans">
+        <h2>9. Booleans</h2>
+        <p>Evaluates to <code>True</code> or <code>False</code>.</p>
+        <p><strong>Values that are False:</strong> <code>None</code>, <code>0</code>, <code>""</code>, <code>()</code>, <code>[]</code>, <code>{}</code>, and empty objects.</p>
+        <pre><code>print(bool(False)) # False
+print(bool(15))    # True
+print(isinstance(200, int)) # Returns True</code></pre>
+    </section>
+
+    <section id="operators">
+        <h2>10. Operators & Precedence</h2>
+        <h3>Arithmetic</h3>
+        <p><code>+ , - , * , / , %</code> (Modulus), <code>**</code> (Exponent), <code>//</code> (Floor division).</p>
+        <h3>Logical</h3>
+        <p><code>and</code> (Both true), <code>or</code> (One true), <code>not</code> (Reverse result).</p>
+        <h3>Identity & Membership</h3>
+        <p><code>is</code> (Same memory location), <code>is not</code>. <br>
+           <code>in</code> (Present in sequence), <code>not in</code>.</p>
+        <h3>Precedence (High to Low)</h3>
+        <p>Parentheses <code>()</code> &rarr; Exponent <code>**</code> &rarr; Multiply/Divide &rarr; Add/Sub &rarr; Comparisons &rarr; Logic (not, and, or).</p>
+    </section>
+
+    <section id="lists">
+        <h2>11. Lists (Full Operations)</h2>
+        <p>Ordered, changeable, and allows duplicates. Defined with <code>[]</code>.</p>
+        <pre><code>fruits = ["apple", "banana", "cherry"]
+fruits[1:3] = ["kiwi", "mango"] # Change range
+fruits.append("orange")         # Add to end
+fruits.insert(1, "lemon")      # Add at index
+fruits.extend(tropical_list)   # Add another collection
+fruits.remove("kiwi")          # Remove specific item
+fruits.pop(1)                  # Remove index 1
+del fruits[0]                  # Delete index 0
+fruits.clear()                 # Empties list</code></pre>
+        <h3>Sorting & Copying</h3>
+        <pre><code>mylist.sort()                # Alphanumeric ascending
+mylist.sort(reverse=True)    # Descending
+mylist.sort(key=str.lower)   # Case-insensitive
+new_list = mylist.copy()     # Proper copy (not a reference)</code></pre>
+        <h3>List Comprehension</h3>
+        <pre><code># newlist = [expression for item in iterable if condition]
+vowels = [x for x in "education" if x in "aeiou"]</code></pre>
+    </section>
+
+    <section id="tuples">
+        <h2>12. Tuples (Immutable)</h2>
+        <p>Ordered and <strong>unchangeable</strong>. Defined with <code>()</code>.</p>
+        <p><strong>Workaround:</strong> To update a tuple, convert to list &rarr; change &rarr; convert back to tuple.</p>
+        <pre><code>colors = ("red", "green", "blue")
+# single_item = ("red",) <- comma required!</code></pre>
+        <h3>Unpacking</h3>
+        <pre><code>fruits = ("apple", "banana", "cherry", "strawberry")
+(green, yellow, *red) = fruits # red becomes a list of the rest</code></pre>
+    </section>
+
+    <section id="sets">
+        <h2>13. Sets (Unordered)</h2>
+        <p>Unordered, unchangeable (but addable/removable), and no duplicates.</p>
+        <p><strong>Duplicates:</strong> <code>True</code> and <code>1</code> are considered the same. <code>False</code> and <code>0</code> are considered the same.</p>
+        <pre><code>myset = {"apple", "banana"}
+myset.add("cherry")
+myset.update(["kiwi", "orange"])
+myset.remove("banana")  # Raises error if not found
+myset.discard("banana") # Does NOT raise error
+x = myset.pop()         # Removes a RANDOM item</code></pre>
+        <h3>Joining Sets</h3>
+        <ul>
+            <li><code>union()</code> or <code>|</code>: All items from both.</li>
+            <li><code>intersection()</code> or <code>&</code>: Only duplicates.</li>
+            <li><code>difference()</code> or <code>-</code>: Only items in first set.</li>
+            <li><code>symmetric_difference()</code> or <code>^</code>: Items NOT in both.</li>
+        </ul>
+    </section>
+
+    <section id="frozensets">
+        <h2>14. Frozenset</h2>
+        <p>An immutable version of a set. Created using <code>frozenset()</code>. It supports non-mutating methods like <code>union()</code> and <code>intersection()</code> but not <code>add()</code> or <code>remove()</code>.</p>
+    </section>
+
+    <section id="dictionaries">
+        <h2>15. Dictionaries (Key:Value)</h2>
+        <p>Ordered (since 3.7), changeable, and no duplicate keys.</p>
+        <pre><code>user = {"name": "Emil", "age": 25}
+print(user["name"])
+print(user.get("age"))
+print(user.keys())   # Returns list of keys
+print(user.values()) # Returns list of values
+print(user.items())  # Returns list of tuples
+user.update({"age": 26})
+user.pop("name")     # Remove key
+user.popitem()       # Remove last inserted item</code></pre>
+    </section>
+
+    <section id="conditionals">
+        <h2>16. If, Elif, Else & Match</h2>
+        <pre><code># Standard if-elif-else
+if a > b:
+    pass # placeholder
+elif a == b:
+    print("Equal")
+else:
+    print("B is bigger")
+
+# Shorthand (Ternary)
+print("A") if a > b else print("B")</code></pre>
+        <h3>Match Statement (3.10+)</h3>
+        <pre><code>match status:
+    case 200 | 201:
+        print("Success")
+    case 404:
+        print("Not Found")
+    case _ if status > 500: # Case with Guard
+        print("Server Error")
+    case _:
+        print("Default case")</code></pre>
+    </section>
+
+    <section id="loops">
+        <h2>17. Loops (While & For)</h2>
+        <h3>While Loop</h3>
+        <p>Runs as long as the condition is true.</p>
+        <pre><code>i = 1
+while i < 6:
+    if i == 3: break     # Exit loop
+    if i == 2: continue  # Skip iteration
+    print(i)
+    i += 1
+else:
+    print("Done") # Runs if loop finished without break</code></pre>
+        <h3>For Loop</h3>
+        <p>Iterates over a sequence.</p>
+        <pre><code>for x in range(2, 30, 3): # start, stop, step
+    print(x)
+
+# Nested Loops
+for x in ["red", "big"]:
+    for y in ["apple", "cherry"]:
+        print(x, y)</code></pre>
+    </section>
+
+    <hr>
+    <footer style="text-align: center; color: #777; margin-bottom: 40px;">
+        Student Study Guide &copy; 2026 | Comprehensive Python Documentation
+    </footer>
+</main>
+
+<script>
+    // Simple script to handle smooth scrolling for sidebar links
+    document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
